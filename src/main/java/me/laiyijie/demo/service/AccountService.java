@@ -1,9 +1,9 @@
-	package me.laiyijie.demo.service;
-	
-	public class AccountService {
-	
-		public String sayHello() {
-	
-			return "hello";
-		}
+package me.laiyijie.demo.service;
+
+public class AccountService implements HelloInterface {
+
+	public String sayHello() {
+
+		return "hello account";
 	}
+}
