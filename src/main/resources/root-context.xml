@@ -4,6 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<bean class="me.laiyijie.demo.service.AccountService"></bean>
+	<bean id="accountAccessImpl" class="me.laiyijie.demo.dataaccess.AccountAccessImpl">
+	</bean>
+	<bean class="me.laiyijie.demo.service.UserServiceImpl">
+		<property ref="accountAccessImpl" name="accountAccess"></property>
+	</bean>
+
 
 </beans>
