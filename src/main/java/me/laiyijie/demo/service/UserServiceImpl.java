@@ -38,5 +38,4 @@ public class UserServiceImpl implements UserService {
 	public void setLoginLogAccess(LoginLogAccess loginLogAccess) {
 		this.loginLogAccess = loginLogAccess;
 	}
-
 }
