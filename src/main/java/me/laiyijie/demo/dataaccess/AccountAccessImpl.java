@@ -1,5 +1,7 @@
 package me.laiyijie.demo.dataaccess;
 
+import org.springframework.stereotype.Service;
+
 public class AccountAccessImpl implements AccountAccess {
 
 	public boolean isAccountExist(String username) {
