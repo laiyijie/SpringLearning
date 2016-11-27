@@ -2,16 +2,16 @@ package me.laiyijie.demo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import me.laiyijie.demo.service.UserService;
+import me.laiyijie.demo.service.HelloInterface;
 
 public class App {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
-		
-		UserService userService = context.getBean(UserService.class);
-		
-		System.out.println(userService.login("lailai", "laiyijie","127.0.0.1"));
-		
+
+		HelloInterface hello = context.getBean(HelloInterface.class);
+
+		hello.sayHello();
+
 		context.close();
 	}
 }
