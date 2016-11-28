@@ -2,6 +2,6 @@ package me.laiyijie.demo.service;
 
 public interface HelloInterface{
 	
-	void sayHello();
-	
+	void sayHello(int i );
+	void sayHelloEverySecondes();
 }
