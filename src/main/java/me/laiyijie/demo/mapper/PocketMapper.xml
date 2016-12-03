@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.laiyijie.demo.dao.AccountMapper">
-  <resultMap id="BaseResultMap" type="me.laiyijie.demo.domain.Account">
+<mapper namespace="me.laiyijie.demo.dao.PocketMapper">
+  <resultMap id="BaseResultMap" type="me.laiyijie.demo.domain.Pocket">
     <id column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="create_time" jdbcType="BIGINT" property="create_time" />
+    <result column="current_money" jdbcType="INTEGER" property="current_money" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    username, password, name, create_time
+    username, current_money
   </sql>
-  <select id="selectByExample" parameterType="me.laiyijie.demo.domain.AccountExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="me.laiyijie.demo.domain.PocketExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from account
+    from pocket
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +83,56 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from account
+    from pocket
     where username = #{username,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from account
+    delete from pocket
     where username = #{username,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="me.laiyijie.demo.domain.AccountExample">
-    delete from account
+  <delete id="deleteByExample" parameterType="me.laiyijie.demo.domain.PocketExample">
+    delete from pocket
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="me.laiyijie.demo.domain.Account">
-    insert into account (username, password, name, 
-      create_time)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{create_time,jdbcType=BIGINT})
+  <insert id="insert" parameterType="me.laiyijie.demo.domain.Pocket">
+    insert into pocket (username, current_money)
+    values (#{username,jdbcType=VARCHAR}, #{current_money,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="me.laiyijie.demo.domain.Account">
-    insert into account
+  <insert id="insertSelective" parameterType="me.laiyijie.demo.domain.Pocket">
+    insert into pocket
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
         username,
       </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="create_time != null">
-        create_time,
+      <if test="current_money != null">
+        current_money,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="create_time != null">
-        #{create_time,jdbcType=BIGINT},
+      <if test="current_money != null">
+        #{current_money,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="me.laiyijie.demo.domain.AccountExample" resultType="java.lang.Long">
-    select count(*) from account
+  <select id="countByExample" parameterType="me.laiyijie.demo.domain.PocketExample" resultType="java.lang.Long">
+    select count(*) from pocket
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update account
+    update pocket
     <set>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
-      </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.create_time != null">
-        create_time = #{record.create_time,jdbcType=BIGINT},
+      <if test="record.current_money != null">
+        current_money = #{record.current_money,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -162,35 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update account
+    update pocket
     set username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      create_time = #{record.create_time,jdbcType=BIGINT}
+      current_money = #{record.current_money,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="me.laiyijie.demo.domain.Account">
-    update account
+  <update id="updateByPrimaryKeySelective" parameterType="me.laiyijie.demo.domain.Pocket">
+    update pocket
     <set>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="create_time != null">
-        create_time = #{create_time,jdbcType=BIGINT},
+      <if test="current_money != null">
+        current_money = #{current_money,jdbcType=INTEGER},
       </if>
     </set>
     where username = #{username,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="me.laiyijie.demo.domain.Account">
-    update account
-    set password = #{password,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      create_time = #{create_time,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="me.laiyijie.demo.domain.Pocket">
+    update pocket
+    set current_money = #{current_money,jdbcType=INTEGER}
     where username = #{username,jdbcType=VARCHAR}
   </update>
 </mapper>
