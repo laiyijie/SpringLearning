@@ -18,14 +18,7 @@
 		p:dataSource-ref="mysqlDataSource" />
 		
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
-        p:dataSource-ref="mysqlDataSource" p:mapperLocations="classpath:me/laiyijie/demo/mapper/*.xml" />
 
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-        p:sqlSessionFactoryBeanName="sqlSessionFactory" p:basePackage="me.laiyijie.demo.dao" />
-	
-	
 	<context:component-scan base-package="me.laiyijie.demo"></context:component-scan>
 
 </beans>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 填写mysql-connector-java的驱动类 -->
+	<classPathEntry
+		location="C:\Users\admin\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar" />
+
+	<context id="context1">
+			<commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+		<!-- 配置连接类和数据库账号密码 -->
+		<jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/myspring"
+			driverClass="com.mysql.jdbc.Driver" userId="test" password="o34rWayJPPHgudtL"/>
+			
+
+		<!-- 配置生成类的存放包名 -->
+		<javaModelGenerator targetPackage="me.laiyijie.demo.domain"
+			targetProject="demo" />
+		<sqlMapGenerator targetPackage="me.laiyijie.demo.mapper"
+			targetProject="demo" />
+		<javaClientGenerator targetPackage="me.laiyijie.demo.dao"
+			targetProject="demo" type="XMLMAPPER" />
+		
+		<!-- 需要生成表 -->
+		<table schema="myspring" tableName="account" domainObjectName="Account">
+			<property name="useActualColumnNames" value="true" />
+		</table>
+		<table schema="myspring" tableName="pocket" domainObjectName="Pocket">
+			<property name="useActualColumnNames" value="true" />
+		</table>
+		
+	</context>
+</generatorConfiguration>
