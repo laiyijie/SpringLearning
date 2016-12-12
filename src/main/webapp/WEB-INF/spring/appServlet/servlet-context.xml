@@ -11,11 +11,19 @@
 
 	<mvc:annotation-driven />
 
-<bean
-	class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
-	p:messageConverters-ref="stringHttpMessageConverter" />
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
+		p:messageConverters-ref="stringHttpMessageConverter" />
 
-<bean id="stringHttpMessageConverter"
-	class="org.springframework.http.converter.StringHttpMessageConverter" />
+	<bean id="stringHttpMessageConverter"
+		class="org.springframework.http.converter.StringHttpMessageConverter" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/user/login" />
+			<bean class="me.laiyijie.demo.controller.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>
